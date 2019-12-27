@@ -1,0 +1,41 @@
+@import "./variables.scss";
+
+.header {
+  height: 60px;
+  position: relative;
+  background: linear-gradient(90deg, $color-dark, $color-primary);
+
+  &__inner {
+    background: $color-shade;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.nav {
+  display: flex;
+
+  &__link {
+    color: $color-text;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: $gap;
+  }
+}
+
+.diagonal {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  fill: $color-dark;
+  height: 24px;
+  width: 100%;
+}
+
+.container {
+  background-color: $bg-default;
+  min-width: 100vw;
+  min-height: 100vh;
+}

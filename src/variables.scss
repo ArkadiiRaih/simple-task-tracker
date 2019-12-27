@@ -1,0 +1,28 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-size: 14px;
+}
+$color-primary: #f44336;
+$color-accent: #00bcd4;
+$color-dark: #d32f2f;
+$color-shade: rgba(0, 0, 0, 0.5);
+$color-light: #ffcdd2;
+$color-divider: #bdbdbd;
+$color-text: #ffffff;
+$bg-default: #222;
+$text-primary: #212121;
+$text-secondary: #757575;
+
+$gap: 5px;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $gap $gap;
+}
