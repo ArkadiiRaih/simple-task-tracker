@@ -1,11 +1,10 @@
 import React from "react";
 
-import Carousel from "./Carousel";
+import Carousel from "./FlexPanel";
 
 const Lending = () => {
   return (
     <div>
-      <div>This is a lending page</div>
       <Carousel />
     </div>
   );

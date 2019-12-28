@@ -1,7 +1,7 @@
 @import "./variables.scss";
 
 .header {
-  height: 60px;
+  height: $header-height;
   position: relative;
   background: linear-gradient(90deg, $color-dark, $color-primary);
 
@@ -37,5 +37,5 @@
 .container {
   background-color: $bg-default;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$header-height});
 }
