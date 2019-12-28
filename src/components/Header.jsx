@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "@reach/router";
 import Diagonal from "./Diagonal";
 
-import UserContext from "./UserContext";
+import UserContext from "../providers/UserContext";
 
 const Header = () => {
   const [user, setUser] = useContext(UserContext);

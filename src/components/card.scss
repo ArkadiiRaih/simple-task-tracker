@@ -1,0 +1,15 @@
+@import "./variables.scss";
+
+.card {
+  @include grid__item-xl_3;
+  @include grid__item-m_6;
+  @include grid__item-l_4;
+  @include grid__item-s_12;
+  display: block;
+  height: 200px;
+  background-color: $color-accent;
+  transition: all 0.6s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
