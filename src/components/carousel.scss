@@ -1,0 +1,16 @@
+.carousel {
+  height: auto;
+
+  &__image {
+    width: 100%;
+    display: none;
+    height: auto;
+    &_active {
+      display: block;
+    }
+  }
+
+  &__button_active {
+    border-color: red;
+  }
+}

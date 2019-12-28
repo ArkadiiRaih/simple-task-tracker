@@ -1,7 +1,14 @@
 import React from "react";
 
+import Carousel from "./Carousel";
+
 const Lending = () => {
-  return <div>This is a lending page</div>;
+  return (
+    <div>
+      <div>This is a lending page</div>
+      <Carousel />
+    </div>
+  );
 };
 
 export default Lending;
