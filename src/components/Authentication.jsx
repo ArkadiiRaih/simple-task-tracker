@@ -1,16 +1,50 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Redirect } from "@reach/router";
+import { isEmpty } from "lodash";
 
-import { signInWithGoogle, signOut } from "../firebase";
-import UserContext from "../providers/UserContext";
+import { signInWithGoogle, createUserProfileDocument, auth } from "../firebase";
+import { UserContext } from "../providers/UserProvider";
 
 const Authentication = () => {
-  const [user, setUser] = useContext(UserContext);
-  useEffect(() => {});
+  const user = useContext(UserContext);
+  const [displayName, setDisplayName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const signUpWithEmailAndPassword = () => {};
+  const handleChange = e => {
+    const { name, value } = e.target;
 
-  if (user) {
+    switch (name) {
+      case "displayName":
+        setDisplayName(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+    }
+  };
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      createUserProfileDocument(user, { displayName });
+    } catch (error) {
+      console.error(error);
+    }
+
+    setDisplayName("");
+    setEmail("");
+    setPassword("");
+  };
+
+  if (!isEmpty(user)) {
     return <Redirect to="/profile" noThrow />;
   }
 
@@ -20,9 +54,11 @@ const Authentication = () => {
         <label htmlFor="name">
           <input
             type="text"
-            name="name"
+            name="displayName"
             required
-            placeholder="enter your name"
+            placeholder="name"
+            value={displayName}
+            onChange={handleChange}
           ></input>
         </label>
         <label htmlFor="email">
@@ -30,7 +66,9 @@ const Authentication = () => {
             type="email"
             name="email"
             required
-            placeholder="enter your name"
+            placeholder="email"
+            value={email}
+            onChange={handleChange}
           ></input>
         </label>
         <label htmlFor="password">
@@ -38,10 +76,12 @@ const Authentication = () => {
             type="password"
             name="password"
             required
-            placeholder="enter your name"
+            placeholder="password"
+            value={password}
+            onChange={handleChange}
           ></input>
         </label>
-        <button onClick={signUpWithEmailAndPassword} type="submit">
+        <button onClick={handleSubmit} type="submit">
           Sign up
         </button>
       </form>

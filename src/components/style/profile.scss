@@ -1,0 +1,20 @@
+@import "./variables.scss";
+
+.profile {
+  &__image {
+    max-height: 200px;
+    border: 2px solid $color-divider;
+    @include grid__item-xl_3;
+    @include grid__item-m_6;
+    @include grid__item-l_4;
+    @include grid__item-s_12;
+    display: block;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.72);
+  }
+  &__description {
+    @include grid__item-xl_9;
+    @include grid__item-m_6;
+    @include grid__item-l_8;
+    @include grid__item-s_12;
+  }
+}

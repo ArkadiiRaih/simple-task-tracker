@@ -1,23 +1,26 @@
 import React, { useContext } from "react";
 import { Redirect } from "@reach/router";
+import "./style/profile.scss";
 
-import { signOut } from "../firebase";
-import UserContext from "../providers/UserContext";
+import { UserContext } from "../providers/UserProvider";
 
 const Profile = () => {
-  const [user, setUser] = useContext(UserContext);
+  const user = useContext(UserContext);
   if (!user) {
     return <Redirect to="/auth" noThrow />;
   }
   return (
-    <div>
-      <h1>Profile page</h1>
-      <img src={user.photoURL} alt="avatar"></img>
-      <div>{user.displayName}</div>
-      <div>{user.email}</div>
-      <button onClick={signOut} style={{ margin: "30px" }}>
-        SignOut
-      </button>
+    <div className="w-70 p-t_m">
+      <div className="grid profile">
+        <img className="profile__image" src={user.photoURL} alt="avatar"></img>
+        <div className="profile__description">
+          <div className="text_primary">Login: &nbsp;{user.displayName}</div>
+          <div className="text_primary">Email: &nbsp;{user.email}</div>
+          <div className="text_primary">
+            Created: &nbsp;{String(user.createdAt)}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

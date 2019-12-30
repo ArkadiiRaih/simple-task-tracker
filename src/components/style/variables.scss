@@ -16,7 +16,7 @@ $color-light: #ffcdd2;
 $color-divider: #bdbdbd;
 $color-text: #ffffff;
 $bg-default: #222;
-$text-primary: #212121;
+$text-primary: #ffffff;
 $text-secondary: #757575;
 
 $header-height: 60px;
@@ -36,6 +36,11 @@ $space-m: 20px;
     grid-column: span 3;
   }
 }
+@mixin grid__item-xl_9 {
+  @media (min-width: 1280px) {
+    grid-column: span 9;
+  }
+}
 
 @mixin grid__item-m_6 {
   @media (min-width: 421px) and (max-width: 720px) {
@@ -46,6 +51,12 @@ $space-m: 20px;
 @mixin grid__item-l_4 {
   @media (min-width: 721px) and (max-width: 1279px) {
     grid-column: span 4;
+  }
+}
+
+@mixin grid__item-l_8 {
+  @media (min-width: 721px) and (max-width: 1279px) {
+    grid-column: span 8;
   }
 }
 
@@ -66,4 +77,21 @@ $space-m: 20px;
 
 .h1 {
   color: $color-text;
+  font-size: 3rem;
+}
+
+@mixin text {
+  font-size: 1.5rem;
+}
+
+.text {
+  &_primary {
+    @include text;
+    color: $text-primary;
+  }
+
+  &_secondary {
+    @include text;
+    color: $text-secondary;
+  }
 }

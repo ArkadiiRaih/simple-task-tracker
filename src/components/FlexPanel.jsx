@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
-import "./flex-panel.scss";
+import "./style/flex-panel.scss";
 
 const defaultImages = [
   "./public/supr.png",

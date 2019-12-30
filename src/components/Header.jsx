@@ -1,11 +1,16 @@
 import React, { useContext } from "react";
 import { Link } from "@reach/router";
-import Diagonal from "./Diagonal";
+import { isEmpty } from "lodash";
 
-import UserContext from "../providers/UserContext";
+import "./style/header.scss";
+
+import Diagonal from "./Diagonal";
+import { signOut } from "../firebase";
+import { UserContext } from "../providers/UserProvider";
+import { makePathFromString } from "../utilities";
 
 const Header = () => {
-  const [user, setUser] = useContext(UserContext);
+  const user = useContext(UserContext);
 
   return (
     <header className="header">
@@ -16,10 +21,18 @@ const Header = () => {
         <Link className="nav__link" to="/boards">
           Boards
         </Link>
-        {user ? (
-          <Link className="nav__link" to="/profile">
-            My account
-          </Link>
+        {!isEmpty(user) ? (
+          <>
+            <Link
+              className="nav__link"
+              to={`/${makePathFromString(user.displayName)}}`}
+            >
+              My account
+            </Link>
+            <Link className="nav__link" onClick={signOut} to="/">
+              Log Out
+            </Link>
+          </>
         ) : (
           <Link className="nav__link" to="/auth">
             Auth
