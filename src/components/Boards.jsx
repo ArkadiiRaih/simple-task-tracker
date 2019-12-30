@@ -10,6 +10,7 @@ const Boards = () => {
   const user = useContext(UserContext);
   const [newBoardName, setNewBoardName] = useState("");
   const boardsRef = firestore.collection("boards");
+  const userRef = firestore.doc(`users/${user.uid}`);
   useEffect(() => {
     const boards = user.boards;
     setBoards(boards);
@@ -18,14 +19,19 @@ const Boards = () => {
   const handleChange = e => {
     setNewBoardName(e.target.value);
   };
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const board = {
       boardName: newBoardName,
       subboards: [],
       users: user.uid
     };
-    boardsRef.add(board);
+    const { id: boardId } = await boardsRef.add(board);
+    const updateBoards = {
+      boards: [...boards, { boardName: newBoardName, boardId }]
+    };
+    userRef.update(updateBoards);
+    setBoards([...boards, { boardName: newBoardName, boardId }]);
 
     setNewBoardName("");
   };
