@@ -44,6 +44,7 @@ export const createUserProfileDocument = async (user, additionalData) => {
   }
   return getUserDocument(user.uid);
 };
+
 export const getUserDocument = async uid => {
   if (!uid) return null;
   try {
@@ -60,6 +61,8 @@ export const getUserDocument = async uid => {
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithEmailAndPassword = (email, password) =>
+  auth.signInWithEmailAndPassword(email, password);
 export const signOut = () => auth.signOut();
 
 export default firebase;

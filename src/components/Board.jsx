@@ -41,7 +41,12 @@ const Board = ({ boardId }) => {
       <div className="grid p-t_m">
         {board.subboards ? (
           board.subboards.map((sub, idx) => (
-            <Column key={`${boardId}${sub.name}${idx}`} subBoard={sub} />
+            <Column
+              key={`${boardId}${sub.name}${idx}`}
+              subBoard={sub}
+              boardId={boardId}
+              idx={idx}
+            />
           ))
         ) : (
           <></>
