@@ -1,45 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment, useState } from "react";
 import { Link } from "@reach/router";
-import { isEmpty } from "lodash";
 
 import "./style/header.scss";
 
-import Diagonal from "./Diagonal";
 import { signOut } from "../firebase";
 import { UserContext } from "../providers/UserProvider";
-import { makePathFromString } from "../utilities";
 
 const Header = () => {
   const user = useContext(UserContext);
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow(!show);
+  };
 
   return (
-    <header className="header">
-      <div className="header__inner">
-        <Link className="nav__link" to="/">
-          Home
+    <header className="header header_sticky">
+      <div className={`nav nav_active ${show ? "nav_show" : ""}`}>
+        <Link className="nav__logo" to="#">
+          LOGO
         </Link>
-        <Link className="nav__link" to="/boards">
-          Boards
-        </Link>
-        {!isEmpty(user) ? (
-          <>
-            <Link
-              className="nav__link"
-              to={`/${makePathFromString(user.displayName)}}`}
-            >
-              My account
-            </Link>
-            <Link className="nav__link" onClick={signOut} to="/">
-              Log Out
-            </Link>
-          </>
-        ) : (
-          <Link className="nav__link" to="/auth">
-            Auth
+        <button className="nav__link nav__toggler" onClick={handleClick}>
+          Menu
+        </button>
+        <div className="nav__collapse">
+          <Link className="nav__link" to="/">
+            Home
           </Link>
-        )}
+          <Link className="nav__link" to="/boards">
+            Boards
+          </Link>
+          {user ? (
+            <Fragment>
+              <Link className="nav__link" to={"/profile"}>
+                My account
+              </Link>
+              <Link className="nav__link" onClick={signOut} to="/">
+                Log Out
+              </Link>
+            </Fragment>
+          ) : (
+            <Link className="nav__link" to="/auth">
+              Auth
+            </Link>
+          )}
+        </div>
       </div>
-      <Diagonal />
     </header>
   );
 };

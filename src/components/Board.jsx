@@ -1,56 +1,50 @@
-import React, { useEffect, useContext, useState } from "react";
-import { Redirect } from "@reach/router";
-import { isEmpty } from "lodash";
+import React, { useEffect, useState } from "react";
 
-import { UserContext } from "../providers/UserProvider";
-import { firestore } from "../firebase";
+import firebase, { firestore } from "../firebase";
 import Column from "./Column";
+import { collectIdsAndDocs } from "../utilities";
 import "./style/card.scss";
 
 const Board = ({ boardId }) => {
-  const user = useContext(UserContext);
-  const [board, setBoard] = useState({});
   const [newColumnName, setNewColumnName] = useState("");
+  const [columns, setColumns] = useState([]);
 
-  let unsubscribeFromFirestore = null;
+  const boardRef = firestore.doc(`boards/${boardId}`);
+  const columnsRef = boardRef.collection("columns");
+
   useEffect(() => {
-    unsubscribeFromFirestore = firestore
-      .doc(`boards/${boardId}`)
-      .onSnapshot(doc => setBoard(doc.data()));
-
-    return unsubscribeFromFirestore;
+    const unsubscribeFromColumns = columnsRef.onSnapshot(snapshot => {
+      const columns = snapshot.docs.map(collectIdsAndDocs);
+      setColumns(columns);
+    });
+    return unsubscribeFromColumns;
   }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
-    const column = { name: newColumnName, tasks: [] };
-    firestore
-      .doc(`boards/${boardId}`)
-      .update({ subboards: [...board.subboards, column] });
+    columnsRef.add({ colName: newColumnName, tasks: [] });
     setNewColumnName("");
   };
   const handleChange = e => {
     setNewColumnName(e.target.value);
   };
 
-  if (isEmpty(user)) {
-    return <Redirect to="/auth" noThrow />;
-  }
+  const onCreate = (taskName, id) => {
+    columnsRef.doc(id).update({
+      tasks: firebase.firestore.FieldValue.arrayUnion({
+        taskName,
+        description: ""
+      })
+    });
+  };
+
   return (
     <div className="w-70 p-t_m">
       <div className="grid p-t_m">
-        {board.subboards ? (
-          board.subboards.map((sub, idx) => (
-            <Column
-              key={`${boardId}${sub.name}${idx}`}
-              subBoard={sub}
-              boardId={boardId}
-              idx={idx}
-            />
-          ))
-        ) : (
-          <></>
-        )}
+        {columns &&
+          columns.map(col => (
+            <Column key={col.id} {...col} onCreate={onCreate} />
+          ))}
         <div className="card">
           <form onSubmit={handleSubmit}>
             <input

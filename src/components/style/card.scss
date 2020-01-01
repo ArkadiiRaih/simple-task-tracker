@@ -5,11 +5,73 @@
   @include grid__item-m_6;
   @include grid__item-l_4;
   @include grid__item-s_12;
-  display: block;
-  height: 200px;
-  background-color: $color-accent;
-  transition: all 0.6s;
-  &:hover {
-    transform: scale(1.05);
+  //min-height: 200px;
+  background-color: #222;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7), 0 2px 14px rgba(0, 0, 0, 0.7);
+  max-width: 400px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.card__header {
+  font-size: 1.5rem;
+  color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+.card__body {
+  padding: 5px 0 0 0;
+}
+
+.card__text {
+  color: #ccc;
+  overflow-wrap: break-word;
+}
+
+.card__appearable {
+  align-self: center;
+  transition: all 1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transform: translateX(-120%) rotate(30deg);
+  transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card__appearable_active {
+  transform: translateX(0) rotate(0deg);
+}
+
+.card__group {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7), 0 2px 14px rgba(0, 0, 0, 0.7);
+}
+
+.card__group > .card {
+  margin-bottom: 10px;
+  max-width: 300px;
+}
+
+.card__group > .card:nth-child(even) {
+  align-self: flex-end;
+}
+
+.card__group > .card:nth-child(odd) {
+  align-self: flex-start;
+}
+
+@media only screen and (max-width: 720px) {
+  .card__appearable {
+    align-self: flex-end;
+    max-width: 250px;
+  }
+  .card__group {
+    max-width: 250px;
+    padding: 5px;
+  }
+
+  .card__group > .card {
+    max-width: 200px;
   }
 }

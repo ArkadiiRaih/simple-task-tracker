@@ -17,8 +17,8 @@ const App = () => {
           <Lending path="/" />
           <Boards path="/boards" />
           <Authentication path="/auth" />
-          <Profile path="/:userName" />
-          <Board path="/:username/:boardId" />
+          <Profile path="/profile" />
+          <Board path="/boards/:boardId" />
         </Router>
       </main>
     </React.StrictMode>
