@@ -15,13 +15,13 @@ const Board = ({ boardId }) => {
   useEffect(() => {
     const unsubscribeFromColumns = columnsRef.onSnapshot(snapshot => {
       const columns = snapshot.docs.map(collectIdsAndDocs);
-      setColumns(columns);
+      setColumns(columns.sort((col1, col2) => col1.order - col2.order));
     });
     return unsubscribeFromColumns;
   }, []);
 
   const onColumnAdd = colName => {
-    columnsRef.add({ colName, tasks: [] });
+    columnsRef.add({ colName, tasks: [], order: columns.length });
   };
   const onColumnDelete = id => {
     columnsRef.doc(id).delete();
@@ -36,6 +36,12 @@ const Board = ({ boardId }) => {
     });
   };
 
+  const onTaskDelete = (id, task) => {
+    columnsRef.doc(id).update({
+      tasks: firebase.firestore.FieldValue.arrayRemove(task)
+    });
+  };
+
   return (
     <div className="board-wrapper p-t_head">
       {columns &&
@@ -44,6 +50,7 @@ const Board = ({ boardId }) => {
             key={col.id}
             {...col}
             onTaskAdd={onTaskAdd}
+            onTaskDelete={onTaskDelete}
             onColumnDelete={onColumnDelete}
           />
         ))}

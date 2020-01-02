@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 
 import AddItem from "./AddItem";
 
-const Column = ({ id, colName, tasks, onTaskAdd, onColumnDelete }) => {
+const Column = ({
+  id,
+  colName,
+  tasks,
+  onTaskAdd,
+  onColumnDelete,
+  onTaskDelete
+}) => {
   const onAdd = name => {
     onTaskAdd(name, id);
   };
 
-  const onDelete = () => {
-    onColumnDelete(id);
+  const onDelete = (e, task = {}) => {
+    switch (e.target.dataset.action) {
+      case "column":
+        onColumnDelete(id);
+        break;
+      case "task":
+        onTaskDelete(id, task);
+        break;
+      default:
+        return;
+    }
   };
   return (
     <div className="column-wrapper">
@@ -30,6 +46,7 @@ const Column = ({ id, colName, tasks, onTaskAdd, onColumnDelete }) => {
             className="button button_cancel"
             onClick={onDelete}
             style={{ flexBasis: "100%" }}
+            data-action="column"
           >
             Delete Column
           </button>
@@ -39,6 +56,13 @@ const Column = ({ id, colName, tasks, onTaskAdd, onColumnDelete }) => {
             tasks.map(({ taskName, description }) => (
               <li className="list__item" key={`${id}_${taskName}`}>
                 {taskName}
+                <button
+                  className="button button_cancel"
+                  data-action="task"
+                  onClick={e => onDelete(e, { taskName, description })}
+                >
+                  Delete Task
+                </button>
               </li>
             ))}
           <li className="list__item">

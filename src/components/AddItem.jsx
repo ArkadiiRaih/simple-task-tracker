@@ -9,10 +9,13 @@ const AddItem = ({ onAdd, item }) => {
     if (name == "") return;
     onAdd(name);
     setName("");
+    onToggle();
   };
+
   const handleChange = e => {
     setName(e.target.value);
   };
+
   const onToggle = () => {
     setActive(!active);
   };
