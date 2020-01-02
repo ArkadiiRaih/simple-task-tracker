@@ -3,6 +3,7 @@ import "./style/lending.scss";
 import { animateCard } from "./style/card";
 import { animatePicker, blurPage } from "./style/lending";
 const Lending = () => {
+  // it is bad, need to rewrite it in react with refs to DOM nodes
   useEffect(() => {
     animatePicker();
     blurPage();

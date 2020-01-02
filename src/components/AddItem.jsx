@@ -43,7 +43,7 @@ const AddItem = ({ onAdd, item }) => {
         />
         <div className="button-group">
           <button className="button button_green" type="submit">
-            Add task
+            Add {item}
           </button>
           <button
             type="button"
