@@ -10,22 +10,6 @@ const Column = ({
   onColumnDelete,
   onTaskDelete
 }) => {
-  const onAdd = name => {
-    onTaskAdd(name, id);
-  };
-
-  const onDelete = (e, task = {}) => {
-    switch (e.target.dataset.action) {
-      case "column":
-        onColumnDelete(id);
-        break;
-      case "task":
-        onTaskDelete(id, task);
-        break;
-      default:
-        return;
-    }
-  };
   return (
     <div className="column-wrapper">
       <div className="column">
@@ -44,7 +28,7 @@ const Column = ({
           </svg>
           <button
             className="button button_cancel"
-            onClick={onDelete}
+            onClick={onColumnDelete}
             style={{ flexBasis: "100%" }}
             data-action="column"
           >
@@ -59,14 +43,14 @@ const Column = ({
                 <button
                   className="button button_cancel"
                   data-action="task"
-                  onClick={e => onDelete(e, { taskName, description })}
+                  onClick={() => onTaskDelete({ taskName, description })}
                 >
                   Delete Task
                 </button>
               </li>
             ))}
           <li className="list__item">
-            <AddItem onAdd={onAdd} item="task" />
+            <AddItem onAdd={onTaskAdd} item="task" />
           </li>
         </ul>
       </div>

@@ -24,22 +24,24 @@ const Board = ({ boardId }) => {
     columnsRef.add({ colName, tasks: [], order: columns.length });
   };
   const onColumnDelete = id => {
-    columnsRef.doc(id).delete();
+    return () => columnsRef.doc(id).delete();
   };
 
-  const onTaskAdd = (taskName, id) => {
-    columnsRef.doc(id).update({
-      tasks: firebase.firestore.FieldValue.arrayUnion({
-        taskName,
-        description: ""
-      })
-    });
+  const onTaskAdd = id => {
+    return taskName =>
+      columnsRef.doc(id).update({
+        tasks: firebase.firestore.FieldValue.arrayUnion({
+          taskName,
+          description: ""
+        })
+      });
   };
 
-  const onTaskDelete = (id, task) => {
-    columnsRef.doc(id).update({
-      tasks: firebase.firestore.FieldValue.arrayRemove(task)
-    });
+  const onTaskDelete = id => {
+    return task =>
+      columnsRef.doc(id).update({
+        tasks: firebase.firestore.FieldValue.arrayRemove(task)
+      });
   };
 
   return (
@@ -49,9 +51,9 @@ const Board = ({ boardId }) => {
           <Column
             key={col.id}
             {...col}
-            onTaskAdd={onTaskAdd}
-            onTaskDelete={onTaskDelete}
-            onColumnDelete={onColumnDelete}
+            onTaskAdd={onTaskAdd(col.id)}
+            onTaskDelete={onTaskDelete(col.id)}
+            onColumnDelete={onColumnDelete(col.id)}
           />
         ))}
       <div className="column-wrapper">
