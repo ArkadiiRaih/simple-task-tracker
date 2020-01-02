@@ -23,6 +23,9 @@ const Board = ({ boardId }) => {
   const onColumnAdd = colName => {
     columnsRef.add({ colName, tasks: [] });
   };
+  const onColumnDelete = id => {
+    columnsRef.doc(id).delete();
+  };
 
   const onTaskAdd = (taskName, id) => {
     columnsRef.doc(id).update({
@@ -37,7 +40,12 @@ const Board = ({ boardId }) => {
     <div className="board-wrapper p-t_head">
       {columns &&
         columns.map(col => (
-          <Column key={col.id} {...col} onTaskAdd={onTaskAdd} />
+          <Column
+            key={col.id}
+            {...col}
+            onTaskAdd={onTaskAdd}
+            onColumnDelete={onColumnDelete}
+          />
         ))}
       <div className="column-wrapper">
         <div className="column">

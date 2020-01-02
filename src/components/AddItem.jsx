@@ -19,7 +19,10 @@ const AddItem = ({ onAdd, item }) => {
 
   return (
     <Fragment>
-      <button className="button form-toggler" onClick={onToggle}>
+      <button
+        className={`button form-toggler ${active ? "form-toggler_hidden" : ""}`}
+        onClick={onToggle}
+      >
         New {item}
       </button>
       <form
@@ -39,7 +42,11 @@ const AddItem = ({ onAdd, item }) => {
           <button className="button button_green" type="submit">
             Add task
           </button>
-          <button type="button" className="button button_cancel">
+          <button
+            type="button"
+            className="button button_cancel"
+            onClick={onToggle}
+          >
             Cancel
           </button>
         </div>

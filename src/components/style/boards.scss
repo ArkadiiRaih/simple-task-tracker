@@ -1,0 +1,16 @@
+.card {
+  width: 200px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 15px 10px;
+  outline: none;
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.card:hover {
+  background-color: #fb7d44;
+  transform: scale(1.05);
+}

@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../providers/UserProvider";
 import { Link } from "@reach/router";
 import { firestore } from "../firebase";
 import AddBoard from "./AddBoard";
 import { BoardsContext } from "../providers/BoardsProvider";
+import "./style/boards.scss";
 
 const Boards = () => {
   const boards = useContext(BoardsContext);
@@ -22,7 +23,6 @@ const Boards = () => {
     <div className="p-t_head text_center">
       <h1 className="h1">Your boards</h1>
       <div className="grid w-70 p-t_m">
-        <AddBoard onCreate={onCreate} />
         {boards &&
           boards.map(({ id, name }) => (
             <Link
@@ -33,6 +33,7 @@ const Boards = () => {
               <div>{name}</div>
             </Link>
           ))}
+        <AddBoard onCreate={onCreate} />
       </div>
     </div>
   );

@@ -11,8 +11,7 @@
 }
 
 .column {
-  max-width: 250px;
-  min-width: 200px;
+  width: 250px;
   background-color: rgba(0, 0, 0, 0.4);
 
   &-wrapper {
@@ -20,15 +19,17 @@
   }
 
   &__header {
-    text-align: center;
     background: #2a92bf;
     padding: 10px 5px;
+    display: flex;
+    flex-flow: row wrap;
   }
 
   &__title {
     font-size: 1.4rem;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     font-weight: 400;
+    flex: 1 0 auto;
   }
 
   &__body {
@@ -74,6 +75,8 @@
   .textarea {
     border: none;
     outline: none;
+    padding: 5px;
+    font-size: 1.1rem;
 
     &_w_100 {
       width: 100%;
