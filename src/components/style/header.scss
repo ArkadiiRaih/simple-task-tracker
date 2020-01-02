@@ -1,23 +1,15 @@
 @import "./variables.scss";
 
-.header_sticky {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
 .header {
   height: 50px;
   z-index: 1;
-}
 
-.nav_active {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-.nav_active .nav__logo {
-  max-width: 200px;
-  border-right: 1px solid #fff;
+  &_sticky {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 }
 
 .nav {
@@ -25,86 +17,84 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-}
 
-.nav__logo {
-  max-width: 0;
-  overflow: hidden;
-  flex: 1 0 auto;
-  text-align: center;
-  font-size: 2rem;
-  text-decoration: none;
-  color: #fff;
-  transition: all 1s linear;
-}
-.nav__link {
-  text-align: center;
-  padding: 5px;
-  color: #ccc;
-  flex: 1 0 auto;
-  text-decoration: none;
-  font-size: 1.5rem;
-  transition: all 0.3s linear;
-  border-radius: 20px;
-}
-.nav__link:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: #fff;
-}
+  &_active {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  &_active &__logo {
+    max-width: 200px;
+    border-right: 1px solid #fff;
+  }
 
-.nav__collapse {
-  flex: 1 0 auto;
-  display: flex;
-}
-
-.nav__toggler {
-  visibility: hidden;
-  max-width: 0px;
-  border-radius: 0;
-  line-height: 40px;
-  background: none;
-  border: none;
-  outline: none;
-}
-
-.nav_show > .nav__collapse {
-  z-index: 5;
-  visibility: visible;
-  transition: all 0.7s;
-  transform: translateY(0);
-}
-
-@media only screen and (max-width: 420px) {
-  .nav__collapse {
-    visibility: hidden;
+  &__logo {
+    max-width: 0;
     overflow: hidden;
-    position: fixed;
-    top: 50px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    z-index: -2;
-    justify-content: flex-start;
-    background-color: rgba(0, 0, 0, 0.6);
-    transition: all 0.7s;
-    transform: translateY(-100%);
-  }
-  .nav__collapse > .nav__link {
-    max-height: 40px;
+    flex: 1 0 auto;
+    text-align: center;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all 1s linear;
   }
 
-  .nav__toggler {
+  &__link {
+    text-align: center;
+    padding: 5px;
+    color: #ccc;
+    flex: 1 0 auto;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s linear;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #fff;
+    }
+  }
+
+  &__collapse {
+    flex: 1 0 auto;
+    display: flex;
+  }
+
+  &__toggler {
+    visibility: hidden;
+    max-width: 0px;
+    border-radius: 0;
+    line-height: 40px;
+    background: none;
+    border: none;
+    outline: none;
+  }
+  &_show > &__collapse {
+    z-index: 5;
     visibility: visible;
-    max-width: none;
+    transition: all 0.7s;
+    transform: translateY(0);
   }
-}
 
-.diagonal {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  fill: $color-dark;
-  height: 24px;
-  width: 100%;
+  @media only screen and (max-width: 420px) {
+    &__collapse {
+      visibility: hidden;
+      overflow: hidden;
+      position: fixed;
+      top: 50px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      z-index: -2;
+      justify-content: flex-start;
+      background-color: rgba(0, 0, 0, 0.6);
+      transition: all 0.7s;
+      transform: translateY(-100%);
+    }
+    &__collapse > &__link {
+      max-height: 40px;
+    }
+
+    &__toggler {
+      visibility: visible;
+      max-width: none;
+    }
+  }
 }
