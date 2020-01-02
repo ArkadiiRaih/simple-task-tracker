@@ -10,9 +10,16 @@ const Profile = () => {
     return <Redirect to="/auth" noThrow />;
   }
   return (
-    <div className="w-70 p-t_m">
+    <div className="w-70 p-t_head">
       <div className="grid profile">
-        <img className="profile__image" src={user.photoURL} alt="avatar"></img>
+        <div className="profile__image_container">
+          <img
+            className="profile__image"
+            src={user.photoURL}
+            alt="avatar"
+          ></img>
+          <button className="input">Change Image</button>
+        </div>
         <div className="profile__description">
           <div className="text_primary">Login: &nbsp;{user.displayName}</div>
           <div className="text_primary">Email: &nbsp;{user.email}</div>

@@ -10,10 +10,10 @@ const Authentication = () => {
   console.log(user);
 
   return (
-    <Fragment>
+    <div className="w-70 p-t_head">
       <SignIn />
       <SignUp />
-    </Fragment>
+    </div>
   );
 };
 

@@ -24,8 +24,10 @@ const SignIn = () => {
 
   return (
     <div>
+      <h1 className="h1">Sign In</h1>
       <form onSubmit={handleSubmit} style={{ paddingTop: "30px" }}>
         <input
+          className="input"
           type="text"
           name="email"
           value={email}
@@ -33,15 +35,22 @@ const SignIn = () => {
           onChange={handleChange}
         />
         <input
+          className="input"
           type="password"
           name="password"
           value={password}
           placeholder="password"
           onChange={handleChange}
         />
-        <button type="submit">Sign In</button>
+        <button className="input" type="submit">
+          Sign In
+        </button>
       </form>
-      <button onClick={signInWithGoogle} style={{ margin: "30px" }}>
+      <button
+        className="input"
+        onClick={signInWithGoogle}
+        style={{ margin: "30px" }}
+      >
         SigninWithGoogle
       </button>
     </div>

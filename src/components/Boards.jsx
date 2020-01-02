@@ -19,13 +19,17 @@ const Boards = () => {
     await boardsRef().add(board);
   }
   return (
-    <div className="p-t_m">
-      <h1>Boards Page</h1>
+    <div className="p-t_head text_center">
+      <h1 className="h1">Your boards</h1>
       <div className="grid w-70 p-t_m">
         <AddBoard onCreate={onCreate} />
         {boards &&
           boards.map(({ id, name }) => (
-            <Link className="card" key={id} to={`/boards/${id}`}>
+            <Link
+              className="card grid__item_default"
+              key={id}
+              to={`/boards/${id}`}
+            >
               <div>{name}</div>
             </Link>
           ))}

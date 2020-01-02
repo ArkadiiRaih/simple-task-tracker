@@ -24,9 +24,8 @@ const Lending = () => {
           <div className="card__header">Create boards</div>
           <div className="card__body">
             <p className="card__text">
-              Мы используем новейшие технологии в сферах разработки, обучения и
-              управления. Заключив договор с нами вы увеличите
-              производительность своего персонала в 100500 миллионов раз.
+              Бла бла бла блабла блаблаблаб бла блабла блаблаблаб блаблабла
+              блаблаблаб бла блабла блаблаблаб бла
             </p>
           </div>
         </div>
@@ -34,25 +33,24 @@ const Lending = () => {
       <div className="page page-2">
         <div className="card__group card__appearable">
           <div className="card ">
-            <div className="card__header">Наш тупорылый бот</div>
+            <div className="card__header">блабла блаблабла</div>
             <div className="card__body">
-              <p className="card__text">Здравствуйте, чем я могу помочь?</p>
+              <p className="card__text">блабла блаблаблаб бла</p>
             </div>
           </div>
           <div className="card">
-            <div className="card__header">Наш тупорылый клиент</div>
+            <div className="card__header">Нблабла блаба</div>
             <div className="card__body">
               <p className="card__text">
-                Назначь сегодня встречу с персоналом на 9. Перенеси подписание
-                сделки на завтра.
+                блабла блаблаблаб блаблабла блаблаблаб блаблабла блаблаблаб бла
               </p>
             </div>
           </div>
           <div className="card">
-            <div className="card__header">Наш тупорылый бот</div>
+            <div className="card__header">блабла блаблабла</div>
             <div className="card__body">
               <p className="card__text">
-                Хуй тебе мешок кожаный. Делай все сам.
+                блабла блаблаблаб блаблабла блаблаблаб бла
               </p>
             </div>
           </div>

@@ -1,16 +1,15 @@
 @import "./variables.scss";
 
 .card {
-  @include grid__item-xl_3;
-  @include grid__item-m_6;
-  @include grid__item-l_4;
-  @include grid__item-s_12;
-  //min-height: 200px;
   background-color: #222;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.7), 0 2px 14px rgba(0, 0, 0, 0.7);
   max-width: 400px;
   border-radius: 5px;
   padding: 5px;
+
+  &_column {
+    min-width: 200px;
+  }
 }
 
 .card__header {

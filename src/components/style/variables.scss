@@ -8,6 +8,8 @@
 :root {
   font-size: 14px;
 }
+$bg-border: rgba(0, 0, 0, 0.7);
+$bg-default: #33363d;
 $color-primary: #f44336;
 $color-accent: #00bcd4;
 $color-dark: #d32f2f;
@@ -15,7 +17,6 @@ $color-shade: rgba(0, 0, 0, 0.5);
 $color-light: #ffcdd2;
 $color-divider: #bdbdbd;
 $color-text: #ffffff;
-$bg-default: #222;
 $text-primary: #ffffff;
 $text-secondary: #757575;
 
@@ -24,12 +25,6 @@ $header-height: 60px;
 $gap: 10px;
 
 $space-m: 20px;
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: $gap $gap;
-}
 
 @mixin grid__item-xl_3 {
   @media (min-width: 1280px) {
@@ -66,8 +61,25 @@ $space-m: 20px;
   }
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $gap $gap;
+
+  &__item_default {
+    @include grid__item-xl_3;
+    @include grid__item-m_6;
+    @include grid__item-l_4;
+    @include grid__item-s_12;
+  }
+}
+
 .p-t_m {
   padding-top: $space-m;
+}
+
+.p-t_head {
+  padding-top: $header-height;
 }
 
 .w-70 {
@@ -94,4 +106,23 @@ $space-m: 20px;
     @include text;
     color: $text-secondary;
   }
+
+  &_center {
+    text-align: center;
+  }
+}
+
+body {
+  background-color: $bg-default;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  background-color: $bg-default;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
 }

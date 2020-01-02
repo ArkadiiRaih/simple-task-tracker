@@ -1,0 +1,98 @@
+.board-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  overflow-x: auto;
+  color: #ccc;
+}
+
+.column {
+  max-width: 250px;
+  min-width: 200px;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  &-wrapper {
+    padding: 10px;
+  }
+
+  &__header {
+    text-align: center;
+    background: #2a92bf;
+    padding: 10px 5px;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 400;
+  }
+
+  &__body {
+    padding: 10px 5px;
+    font-size: 1.2rem;
+  }
+}
+
+.list {
+  list-style: none;
+
+  &__item {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 4px;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
+    &:not(:last-child) {
+      margin-bottom: 3px;
+    }
+
+    &:not(:last-child):hover {
+      background-color: #fb7d44;
+    }
+    &:last-child:hover {
+      background-color: rgba(0, 185, 97, 0.7);
+    }
+  }
+}
+
+.form {
+  &-toggler {
+    &_hidden {
+      display: none;
+    }
+  }
+
+  &__hidden {
+    max-height: 0;
+    max-width: 0;
+    overflow: hidden;
+  }
+
+  .textarea {
+    border: none;
+    outline: none;
+
+    &_w_100 {
+      width: 100%;
+    }
+  }
+}
+.button {
+  width: 100%;
+  min-height: 30px;
+  border: none;
+  background: none;
+  outline: none;
+  color: #fff;
+
+  &_green {
+    background-color: rgba(0, 185, 97, 1);
+  }
+
+  &_cancel:hover {
+    background: rgba(185, 0, 97, 1);
+  }
+}

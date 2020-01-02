@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import firebase, { firestore } from "../firebase";
 import Column from "./Column";
 import { collectIdsAndDocs } from "../utilities";
-import "./style/card.scss";
+import AddItem from "./AddItem";
+import "./style/board.scss";
 
 const Board = ({ boardId }) => {
-  const [newColumnName, setNewColumnName] = useState("");
   const [columns, setColumns] = useState([]);
 
   const boardRef = firestore.doc(`boards/${boardId}`);
@@ -20,16 +20,11 @@ const Board = ({ boardId }) => {
     return unsubscribeFromColumns;
   }, []);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    columnsRef.add({ colName: newColumnName, tasks: [] });
-    setNewColumnName("");
-  };
-  const handleChange = e => {
-    setNewColumnName(e.target.value);
+  const onColumnAdd = colName => {
+    columnsRef.add({ colName, tasks: [] });
   };
 
-  const onCreate = (taskName, id) => {
+  const onTaskAdd = (taskName, id) => {
     columnsRef.doc(id).update({
       tasks: firebase.firestore.FieldValue.arrayUnion({
         taskName,
@@ -39,22 +34,16 @@ const Board = ({ boardId }) => {
   };
 
   return (
-    <div className="w-70 p-t_m">
-      <div className="grid p-t_m">
-        {columns &&
-          columns.map(col => (
-            <Column key={col.id} {...col} onCreate={onCreate} />
-          ))}
-        <div className="card">
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={newColumnName}
-              onChange={handleChange}
-              placeholder="column name"
-            />
-            <button type="submit">Add Column</button>
-          </form>
+    <div className="board-wrapper p-t_head">
+      {columns &&
+        columns.map(col => (
+          <Column key={col.id} {...col} onTaskAdd={onTaskAdd} />
+        ))}
+      <div className="column-wrapper">
+        <div className="column">
+          <div className="column__body">
+            <AddItem onAdd={onColumnAdd} item="column" />
+          </div>
         </div>
       </div>
     </div>

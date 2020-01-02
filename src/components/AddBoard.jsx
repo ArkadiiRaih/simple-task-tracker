@@ -13,9 +13,10 @@ const AddBoard = ({ onCreate }) => {
     setName("");
   }
   return (
-    <div className="card">
+    <div className="card grid__item_default">
       <form onSubmit={handleSubmit}>
         <input
+          className="input input_w_100"
           type="text"
           value={name}
           name="name"
@@ -23,7 +24,7 @@ const AddBoard = ({ onCreate }) => {
           placeholder="board name"
           required
         />
-        <input type="submit" />
+        <input className="input input_w_100" type="submit" />
       </form>
     </div>
   );

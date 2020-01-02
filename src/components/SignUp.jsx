@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import "./style/input.scss";
+
 import { createUserProfileDocument, auth } from "../firebase";
 
 const SignUp = () => {
@@ -42,9 +44,11 @@ const SignUp = () => {
 
   return (
     <div>
+      <h1 className="h1">Sign Up</h1>
       <form style={{ paddingTop: "30px" }}>
         <label htmlFor="name">
           <input
+            className="input"
             type="text"
             name="displayName"
             required
@@ -55,6 +59,7 @@ const SignUp = () => {
         </label>
         <label htmlFor="email">
           <input
+            className="input"
             type="email"
             name="email"
             required
@@ -65,6 +70,7 @@ const SignUp = () => {
         </label>
         <label htmlFor="password">
           <input
+            className="input"
             type="password"
             name="password"
             required
@@ -73,7 +79,7 @@ const SignUp = () => {
             onChange={handleChange}
           ></input>
         </label>
-        <button onClick={handleSubmit} type="submit">
+        <button className="input" onClick={handleSubmit} type="submit">
           Sign up
         </button>
       </form>

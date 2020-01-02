@@ -1,0 +1,18 @@
+@import "./variables.scss";
+
+.input {
+  background: #fff;
+  border: 1px solid $bg-border;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  padding: 5px;
+
+  &_w_100 {
+    width: 100%;
+  }
+}
+
+.hidden {
+  overflow: hidden;
+  max-width: 0px;
+}
