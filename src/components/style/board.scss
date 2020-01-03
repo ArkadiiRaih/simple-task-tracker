@@ -35,6 +35,24 @@
   &__body {
     padding: 10px 5px;
     font-size: 1.2rem;
+    position: relative;
+  }
+
+  &__menu {
+    max-width: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(42, 146, 191, 1);
+    border-top: 1px solid rgba(0, 0, 0, 0.6);
+  }
+
+  &__menu_active {
+    max-width: none;
+    width: 100%;
   }
 }
 
