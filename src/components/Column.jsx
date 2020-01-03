@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import AddItem from "./AddItem";
+import Modal from "./Modal";
 
 const Column = ({
   id,
@@ -11,10 +12,15 @@ const Column = ({
   onTaskDelete
 }) => {
   const [menuActive, setMenuActive] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [activeTask, setActiveTask] = useState({});
 
-  const toggleMenu = () => {
-    setMenuActive(!menuActive);
+  const toggleModal = (task = {}) => {
+    setActiveTask(task);
+    setShowModal(!showModal);
   };
+
+  const toggleMenu = () => setMenuActive(!menuActive);
   return (
     <div className="column-wrapper">
       <div className="column">
@@ -50,15 +56,13 @@ const Column = ({
           </div>
           {tasks &&
             tasks.map(({ taskName, description }) => (
-              <li className="list__item" key={`${id}_${taskName}`}>
+              //eslint-disable-next-line
+              <li
+                className="list__item"
+                key={`${id}_${taskName}`}
+                onClick={() => toggleModal({ taskName, description })}
+              >
                 {taskName}
-                <button
-                  className="button button_cancel"
-                  data-action="task"
-                  onClick={() => onTaskDelete({ taskName, description })}
-                >
-                  Delete Task
-                </button>
               </li>
             ))}
           <li className="list__item">
@@ -66,6 +70,23 @@ const Column = ({
           </li>
         </ul>
       </div>
+      {showModal ? (
+        <Modal>
+          <h1>{activeTask.taskName}</h1>
+          <div>{activeTask.description}</div>
+          <button
+            className="button button_cancel"
+            data-action="task"
+            onClick={() => {
+              onTaskDelete(activeTask);
+              toggleModal();
+            }}
+          >
+            Delete Task
+          </button>
+          <button onClick={toggleModal}>Close Modal</button>
+        </Modal>
+      ) : null}
     </div>
   );
 };

@@ -35,9 +35,16 @@
     "dev": "parcel src/index.html",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "parcel build src/index.html --public-url /simple-task-tracker",
+    "deploy": "gh-pages -d dist"
   },
   "author": "ArkadiiRaih",
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:ArkadiiRaih/simple-task-tracker.git"
+  },
+  "homepage": "https://arkadiiraih.github.io/simple-task-tracker/",
   "license": "ISCP",
   "browserslist": [
     "last 2 Chrome versions"

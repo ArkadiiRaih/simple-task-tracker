@@ -13,7 +13,7 @@ const AddBoard = ({ onCreate }) => {
     setName("");
   }
   return (
-    <div className="card grid__item_default">
+    <div className="modal">
       <form onSubmit={handleSubmit}>
         <input
           className="input input_w_100"
