@@ -61,8 +61,6 @@
     background-color: #fff; }
 
 .card {
-  width: 200px;
-  height: 150px;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 15px 10px;
   outline: none;
@@ -71,6 +69,7 @@
   flex-direction: column; }
   .card__body {
     flex: 1 0 auto;
+    padding: 10px;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5); }
   .card__link {
@@ -81,6 +80,9 @@
     background-color: rgba(185, 0, 97, 0.8); }
   .card:hover {
     transform: scale(1.05); }
+  .card_s {
+    width: 200px;
+    height: 150px; }
 
 .modal {
   width: 70%;
@@ -184,6 +186,19 @@
   .button_cancel:hover {
     background: #b90061; }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center; }
+  .login-form__input {
+    margin: 5px 0; }
+  .login-form__title {
+    margin-bottom: 20px; }
+  .login-form:hover {
+    transform: none; }
+
 *,
 ::before,
 ::after {
@@ -192,7 +207,8 @@
   box-sizing: border-box; }
 
 :root {
-  font-size: 14px; }
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; }
 
 .grid {
   display: grid;
@@ -220,6 +236,9 @@
 .w-70 {
   width: 70%;
   margin: auto; }
+  @media only screen and (max-width: 420px) {
+    .w-70 {
+      width: 90%; } }
 
 .h1 {
   color: #ffffff;
@@ -251,7 +270,6 @@ body {
 .input {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.7);
-  border-radius: 4px;
   font-size: 1.2rem;
   padding: 5px; }
   .input_w_100 {
@@ -269,7 +287,8 @@ body {
   box-sizing: border-box; }
 
 :root {
-  font-size: 14px; }
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; }
 
 .grid {
   display: grid;
@@ -297,6 +316,9 @@ body {
 .w-70 {
   width: 70%;
   margin: auto; }
+  @media only screen and (max-width: 420px) {
+    .w-70 {
+      width: 90%; } }
 
 .h1 {
   color: #ffffff;
@@ -409,7 +431,8 @@ body {
   box-sizing: border-box; }
 
 :root {
-  font-size: 14px; }
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; }
 
 .grid {
   display: grid;
@@ -437,6 +460,9 @@ body {
 .w-70 {
   width: 70%;
   margin: auto; }
+  @media only screen and (max-width: 420px) {
+    .w-70 {
+      width: 90%; } }
 
 .h1 {
   color: #ffffff;
