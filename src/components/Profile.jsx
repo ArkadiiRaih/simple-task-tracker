@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Redirect } from "@reach/router";
 import "./style/profile.scss";
+import moment from "moment";
 
 import { UserContext } from "../providers/UserProvider";
 
@@ -24,7 +25,7 @@ const Profile = () => {
           <div className="text_primary">Login: &nbsp;{user.displayName}</div>
           <div className="text_primary">Email: &nbsp;{user.email}</div>
           <div className="text_primary">
-            Created: &nbsp;{String(user.createdAt)}
+            Created: &nbsp;{moment(user.createdAt).calendar()}
           </div>
         </div>
       </div>

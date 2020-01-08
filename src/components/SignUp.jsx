@@ -43,47 +43,47 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <h1 className="h1">Sign Up</h1>
-      <form style={{ paddingTop: "30px" }}>
-        <label htmlFor="name">
-          <input
-            className="input"
-            type="text"
-            name="displayName"
-            required
-            placeholder="name"
-            value={displayName}
-            onChange={handleChange}
-          ></input>
-        </label>
-        <label htmlFor="email">
-          <input
-            className="input"
-            type="email"
-            name="email"
-            required
-            placeholder="email"
-            value={email}
-            onChange={handleChange}
-          ></input>
-        </label>
-        <label htmlFor="password">
-          <input
-            className="input"
-            type="password"
-            name="password"
-            required
-            placeholder="password"
-            value={password}
-            onChange={handleChange}
-          ></input>
-        </label>
-        <button className="input" onClick={handleSubmit} type="submit">
+    <form style={{ paddingTop: "30px" }} className="login-form card">
+      <div className="card__header">
+        <h1 className="h1 login-form__title">Sign Up</h1>
+      </div>
+      <div className="card__body">
+        <input
+          className="input input_w_100 login-form__input"
+          type="text"
+          name="displayName"
+          required
+          placeholder="name"
+          value={displayName}
+          onChange={handleChange}
+        ></input>
+        <input
+          className="input input_w_100 login-form__input"
+          type="email"
+          name="email"
+          required
+          placeholder="email"
+          value={email}
+          onChange={handleChange}
+        ></input>
+        <input
+          className="input input_w_100 login-form__input"
+          type="password"
+          name="password"
+          required
+          placeholder="password"
+          value={password}
+          onChange={handleChange}
+        ></input>
+        <button
+          className="input input_w_100 login-form__input"
+          onClick={handleSubmit}
+          type="submit"
+        >
           Sign up
         </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

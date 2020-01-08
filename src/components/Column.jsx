@@ -71,7 +71,7 @@ const Column = ({
         </ul>
       </div>
       {showModal ? (
-        <Modal>
+        <Modal toggleModal={toggleModal}>
           <h1>{activeTask.taskName}</h1>
           <div>{activeTask.description}</div>
           <button
@@ -84,7 +84,6 @@ const Column = ({
           >
             Delete Task
           </button>
-          <button onClick={toggleModal}>Close Modal</button>
         </Modal>
       ) : null}
     </div>

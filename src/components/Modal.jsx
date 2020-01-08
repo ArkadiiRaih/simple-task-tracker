@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 
 import "./style/modal.scss";
 
-const Modal = ({ children }) => {
+const Modal = ({ children, toggleModal }) => {
   const elRef = useRef(null);
   if (!elRef.current) {
     const div = document.createElement("div");
@@ -18,7 +18,10 @@ const Modal = ({ children }) => {
   });
   return createPortal(
     <div className="modal_wrapper">
-      <div className="modal">{children}</div>
+      <div className="modal">
+        {children}
+        <button onClick={toggleModal}>Close Modal</button>
+      </div>
     </div>,
     elRef.current
   );

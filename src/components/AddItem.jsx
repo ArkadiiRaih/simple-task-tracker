@@ -1,8 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useRef } from "react";
 
 const AddItem = ({ onAdd, item }) => {
   const [name, setName] = useState("");
   const [active, setActive] = useState(false);
+  const ref = useRef(null);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,6 +19,7 @@ const AddItem = ({ onAdd, item }) => {
 
   const onToggle = () => {
     setActive(!active);
+    ref.current.focus();
   };
 
   return (
@@ -40,6 +42,7 @@ const AddItem = ({ onAdd, item }) => {
           onChange={handleChange}
           placeholder={item}
           required
+          ref={ref}
         />
         <div className="button-group">
           <button className="button button_green" type="submit">

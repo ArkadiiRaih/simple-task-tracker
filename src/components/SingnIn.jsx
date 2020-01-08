@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { signInWithGoogle, signInWithEmailAndPassword } from "../firebase";
+import {
+  signInWithGoogle,
+  signInWithEmailAndPassword,
+  signInWithGithub
+} from "../firebase";
+
+import "./style/login.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -23,11 +31,17 @@ const SignIn = () => {
   };
 
   return (
-    <div>
-      <h1 className="h1">Sign In</h1>
-      <form onSubmit={handleSubmit} style={{ paddingTop: "30px" }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ paddingTop: "30px" }}
+      className="login-form card"
+    >
+      <div className="card__header">
+        <h1 className="h1 login-form__title">Sign In</h1>
+      </div>
+      <div className="card__body">
         <input
-          className="input"
+          className="input input_w_100 login-form__input"
           type="text"
           name="email"
           value={email}
@@ -35,25 +49,36 @@ const SignIn = () => {
           onChange={handleChange}
         />
         <input
-          className="input"
+          className="input input_w_100 login-form__input"
           type="password"
           name="password"
           value={password}
           placeholder="password"
           onChange={handleChange}
         />
-        <button className="input" type="submit">
+        <button className="input input_w_100 login-form__input" type="submit">
           Sign In
         </button>
-      </form>
-      <button
-        className="input"
-        onClick={signInWithGoogle}
-        style={{ margin: "30px" }}
-      >
-        SigninWithGoogle
-      </button>
-    </div>
+        <button
+          type="button"
+          className="input input_w_100"
+          onClick={signInWithGoogle}
+        >
+          <FontAwesomeIcon icon={faGoogle} />
+          {"  "}
+          Signin With Google
+        </button>
+        <button
+          type="button"
+          className="input input_w_100"
+          onClick={signInWithGithub}
+        >
+          <FontAwesomeIcon icon={faGithub} />
+          {"  "}
+          Signin With Github
+        </button>
+      </div>
+    </form>
   );
 };
 

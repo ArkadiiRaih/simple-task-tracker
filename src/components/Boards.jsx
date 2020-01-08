@@ -34,7 +34,7 @@ const Boards = () => {
       <div className="grid w-70 p-t_m">
         {boards &&
           boards.map(({ id, name }) => (
-            <div key={id} className="card grid__item_default">
+            <div key={id} className="card card_s grid__item_default">
               <Link className="card__body card__link" to={`/boards/${id}`}>
                 {name}
               </Link>
@@ -46,7 +46,7 @@ const Boards = () => {
               </button>
             </div>
           ))}
-        <div className="card grid__item_default">
+        <div className="card card_s grid__item_default">
           <Link
             className="card__body card__link"
             to="#addBoard"

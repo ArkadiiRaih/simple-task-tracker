@@ -1,14 +1,20 @@
-import React, { useContext, Fragment, useState } from "react";
+import React, { useContext, Fragment, useState, useEffect } from "react";
 import { Link } from "@reach/router";
 
 import "./style/header.scss";
+import { animateHeader } from "./style/header";
 
 import { signOut } from "../firebase";
 import { UserContext } from "../providers/UserProvider";
 
-const Header = () => {
+const Header = props => {
   const user = useContext(UserContext);
   const [show, setShow] = useState(false);
+  const { pathname } = props.location;
+
+  useEffect(() => {
+    animateHeader();
+  });
 
   const handleClick = () => {
     setShow(!show);
@@ -16,14 +22,18 @@ const Header = () => {
 
   return (
     <header className="header header_sticky">
-      <div className={`nav nav_active ${show ? "nav_show" : ""}`}>
+      <div
+        className={`nav ${pathname == "/" ? "" : "nav_active"} ${
+          show ? "nav_show" : ""
+        }`}
+      >
         <Link className="nav__logo" to="#">
           LOGO
         </Link>
         <button className="nav__link nav__toggler" onClick={handleClick}>
           Menu
         </button>
-        <div className="nav__collapse">
+        <div className="nav__collapse" onClick={handleClick}>
           <Link className="nav__link" to="/">
             Home
           </Link>

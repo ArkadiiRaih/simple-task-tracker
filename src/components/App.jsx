@@ -1,5 +1,5 @@
 import React from "react";
-import { Router } from "@reach/router";
+import { Router, Location } from "@reach/router";
 
 import Lending from "./Lending";
 import Boards from "./Boards";
@@ -11,7 +11,7 @@ import Profile from "./Profile";
 const App = () => {
   return (
     <React.StrictMode>
-      <Header />
+      <Location>{({ location }) => <Header location={location} />}</Location>
       <main className="container">
         <Router>
           <Lending path="/" />
