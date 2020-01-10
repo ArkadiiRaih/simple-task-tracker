@@ -1,8 +1,8 @@
 .modal {
-  width: 70%;
+  max-width: 70%;
   min-width: 300px;
   min-height: 200px;
-  background-color: rgba($color: #fff, $alpha: 0.8);
+  color: #fff;
 
   &_wrapper {
     position: absolute;

@@ -58,11 +58,8 @@ const Boards = () => {
         </div>
       </div>
       {showModal ? (
-        <Modal>
+        <Modal toggleModal={toggleModal} modalTitle="Create new board">
           <AddBoard onCreate={onCreate} />
-          <button className="button button_cancel" onClick={toggleModal}>
-            Close Modal
-          </button>
         </Modal>
       ) : null}
     </div>

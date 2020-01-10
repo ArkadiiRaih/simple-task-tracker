@@ -18,7 +18,7 @@ export const animateHeader = () => {
   }
 };
 
-function debounce(cb, wait) {
+export function debounce(cb, wait) {
   let timeout;
   return function() {
     const context = this,

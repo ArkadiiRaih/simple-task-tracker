@@ -58,7 +58,7 @@ export const getUserDocument = async uid => {
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 export const githubProvider = new firebase.auth.GithubAuthProvider();
 export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
-export const signInWithGithub = () => auth.signInWithPopup(githubProvider);
+export const signInWithGithub = () => auth.signInWithRedirect(githubProvider);
 export const signInWithEmailAndPassword = (email, password) =>
   auth.signInWithEmailAndPassword(email, password);
 export const signOut = () => auth.signOut();

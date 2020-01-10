@@ -20,6 +20,18 @@ const Column = ({
     setShowModal(!showModal);
   };
 
+  const handleTaskChange = e => {
+    e.preventDefault();
+    const newDescription = e.target.description.value;
+    if (activeTask.description != newDescription) {
+      const { taskName } = activeTask;
+      onTaskDelete(activeTask);
+      setActiveTask(Object.assign(activeTask, { description: newDescription }));
+      onTaskAdd(taskName, newDescription);
+    }
+    toggleModal();
+  };
+
   const toggleMenu = () => setMenuActive(!menuActive);
   return (
     <div className="column-wrapper">
@@ -71,9 +83,18 @@ const Column = ({
         </ul>
       </div>
       {showModal ? (
-        <Modal toggleModal={toggleModal}>
-          <h1>{activeTask.taskName}</h1>
-          <div>{activeTask.description}</div>
+        <Modal toggleModal={toggleModal} modalTitle={activeTask.taskName}>
+          <form className="form" onSubmit={handleTaskChange}>
+            <textarea
+              name="description"
+              className="textarea textarea_w_100"
+              defaultValue={`${activeTask.description}`}
+              type="text"
+            />
+            <button className="button button_green" type="submit">
+              Submit
+            </button>
+          </form>
           <button
             className="button button_cancel"
             data-action="task"

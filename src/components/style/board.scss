@@ -95,10 +95,14 @@
     outline: none;
     padding: 5px;
     font-size: 1.1rem;
+    overflow-y: visible;
 
     &_w_100 {
       width: 100%;
     }
+  }
+  .button {
+    margin: 5px auto;
   }
 }
 .button {

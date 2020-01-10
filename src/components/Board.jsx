@@ -28,11 +28,11 @@ const Board = ({ boardId }) => {
   };
 
   const onTaskAdd = id => {
-    return taskName =>
+    return (taskName, description = "") =>
       columnsRef.doc(id).update({
         tasks: firebase.firestore.FieldValue.arrayUnion({
           taskName,
-          description: ""
+          description
         })
       });
   };
