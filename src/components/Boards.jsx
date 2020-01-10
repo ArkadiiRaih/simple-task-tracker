@@ -7,12 +7,13 @@ import { BoardsContext } from "../providers/BoardsProvider";
 import "./style/boards.scss";
 import Modal from "./Modal";
 
+const boardsRef = firestore.collection("/boards");
+
 const Boards = () => {
   const boards = useContext(BoardsContext);
   const user = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
 
-  const boardsRef = firestore.collection("/boards");
   const toggleModal = () => setShowModal(!showModal);
 
   const onCreate = async boardName => {

@@ -16,4 +16,13 @@
     justify-content: center;
     z-index: 999;
   }
+  &.card:hover {
+    transform: none;
+  }
+  &.card {
+    min-width: 50%;
+  }
+  & .textarea {
+    min-height: 200px;
+  }
 }

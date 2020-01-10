@@ -15,7 +15,11 @@ const Board = ({ boardId }) => {
   useEffect(() => {
     const unsubscribeFromColumns = columnsRef.onSnapshot(snapshot => {
       const columns = snapshot.docs.map(collectIdsAndDocs);
-      setColumns(columns.sort((col1, col2) => col1.order - col2.order));
+      setColumns(
+        columns.sort(function ascOrder(col1, col2) {
+          return col1.order - col2.order;
+        })
+      );
     });
     return unsubscribeFromColumns;
   }, []);

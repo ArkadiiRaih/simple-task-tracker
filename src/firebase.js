@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-var firebaseConfig = {
+const firebaseConfig = Object.freeze({
   apiKey: "AIzaSyDCixM-kC9VVwIDUIxITBsLBIpEyf_MpHg",
   authDomain: "task-tracker-a9cf7.firebaseapp.com",
   databaseURL: "https://task-tracker-a9cf7.firebaseio.com",
@@ -10,7 +10,7 @@ var firebaseConfig = {
   storageBucket: "task-tracker-a9cf7.appspot.com",
   messagingSenderId: "391605187417",
   appId: "1:391605187417:web:a5da3faf4007f4f38c1248"
-};
+});
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
