@@ -1,7 +1,5 @@
 import React from "react";
 import { Router, Location } from "@reach/router";
-
-import Lending from "./Lending";
 import Boards from "./Boards";
 import Board from "./Board";
 import Authentication from "./Authentication";
@@ -14,8 +12,7 @@ const App = () => {
       <Location>{({ location }) => <Header location={location} />}</Location>
       <main className="container">
         <Router>
-          <Lending path="/" />
-          <Boards path="/boards" />
+          <Boards path="/" />
           <Authentication path="/auth" />
           <Profile path="/profile" />
           <Board path="/boards/:boardId" />

@@ -23,9 +23,6 @@ const Header = () => {
         </button>
         <div className="nav__collapse" onClick={handleClick}>
           <Link className="nav__link" to="/">
-            Home
-          </Link>
-          <Link className="nav__link" to="/boards">
             Boards
           </Link>
           {user ? (

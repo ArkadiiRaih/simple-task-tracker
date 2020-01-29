@@ -130,3 +130,8 @@ body {
   min-height: 100vh;
   position: relative;
 }
+
+.auth-container {
+  display: flex;
+  flex-flow: row wrap;
+}
